@@ -1,0 +1,4 @@
+@EndUserText.label: 'service Definiation'
+define service Zsrv_test {
+  expose zc_test_hdr;
+}

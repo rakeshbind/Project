@@ -1,0 +1,55 @@
+//managed implementation in class zbp_c_test_hdr unique;
+//strict ( 2 );
+//
+//define behavior for zc_test_hdr //alias <alias_name>
+//persistent table zpo_htable
+//lock master
+//authorization master ( instance )
+////etag master <field_name>
+//{
+//  create ( authorization : global );
+//  update;
+//  delete;
+//  field ( readonly ) Purchaseorder;
+//}
+
+managed implementation in class zbp_c_test_hdr unique;
+strict ( 2 );
+define behavior for zc_test_hdr
+persistent table zpo_htable
+lock master
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   purchaseorder;
+
+//  field ( readonly )
+//   CreatedBy,
+//   CreatedAt,
+//   LocalLastChangedBy,
+//   LocalLastChangedAt,
+//   LastChangedAt;
+
+  field ( readonly : update )
+   purchaseorder;
+
+
+  create;
+  update;
+  delete;
+
+
+
+  mapping for zpo_htable
+  {
+   Purchaseorder = PurchaseOrder;
+   Creationdate  = CreationDate;
+   Purchaseorderdate  = purchaseOrderDate;
+//   CreatedBy = created_by;
+//    CreatedAt = created_at;
+//    LocalLastChangedBy = local_last_changed_by;
+//    LocalLastChangedAt = local_last_changed_at;
+//    LastChangedAt = last_changed_at;
+  }
+}
